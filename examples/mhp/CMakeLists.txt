@@ -7,7 +7,11 @@ target_link_libraries(stencil-slide cxxopts DR::mpi)
 
 if (ENABLE_SYCL)
   add_executable(mhp_dot_product_benchmark dot_product_benchmark.cpp)
+  add_executable(stream_benchmark stream_benchmark.cpp)
+
   target_link_libraries(mhp_dot_product_benchmark DR::mpi cxxopts)
+  target_link_libraries(stream_benchmark DR::mpi cxxopts)
+  
   add_mpi_test(mhp_dot_product mhp_dot_product_benchmark 1 -n 1000)
 endif()
 
